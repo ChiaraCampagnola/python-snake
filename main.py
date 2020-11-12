@@ -1,35 +1,25 @@
 from turtle import Turtle, Screen
 from snake import Snake
+from functools import partial
+import time
+
+def set_up_screen(screen):
+    screen.setup(width=600, height=600)
+    screen.bgcolor("black")
+    screen.title("Snake")
+    screen.tracer(0)
 
 screen = Screen()
-screen.setup(width=600, height=600)
-screen.bgcolor("black")
-screen.title("Snake")
-screen.tracer(0)
-
-# def move_forward(snake):
-#     for bit in range(len(snake)-1, 0, -1):
-#         print(f"bit: {bit}")
-#         next_pos = snake[bit-1].pos()
-#         print(f"next_post: {next_pos}")
-#         snake[bit].goto(next_pos)
-#     snake[0].forward(20)
-#     screen.update()
-
-
-# Create starting snake
-# snake = []
-# for i in range(3):
-#     new_snake_bit = Turtle(shape="square")
-#     new_snake_bit.color("white", "white")
-#     new_snake_bit.penup()
-#     new_snake_bit.goto(x=-i*20, y=0)
-#     snake.append(new_snake_bit)
-# screen.update()
-
+set_up_screen(screen)
 snake = Snake()
 screen.update()
 
+screen.listen()
+screen.onkey(partial(snake.set_direction, "Up"), key="Up")
+screen.onkey(partial(snake.set_direction, "Down"), key="Down")
+screen.onkey(partial(snake.set_direction, "Left"), key="Left")
+screen.onkey(partial(snake.set_direction, "Right"), key="Right")
+
 snake.move_forward()
 screen.update()
 snake.move_forward()
@@ -37,14 +27,12 @@ screen.update()
 snake.move_forward()
 screen.update()
 
-game_is_on = True
+game_over = False
+while not game_over:
+    snake.move()
+    screen.update()
 
-# move_forward(snake)
-# move_forward(snake)
-# move_forward(snake)
-# move_forward(snake)
-
-
+    time.sleep(0.1)
 
 
 
