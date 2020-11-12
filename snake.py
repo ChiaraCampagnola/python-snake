@@ -34,16 +34,6 @@ class Snake:
             next_pos = self.body[segment-1].pos()
             self.body[segment].goto(next_pos)
 
-    def move_forward(self):
-        self.follow_head()
-        self.head.forward(MOVE_DISTANCE)
-
-    def move_2(self, direction):
-        print(f"{direction}")
-        self.follow_head()
-        self.head.setheading(HEADINGS[direction])
-        self.head.forward(MOVE_DISTANCE)
-
     def move(self):
         self.follow_head()
         self.head.forward(MOVE_DISTANCE)
