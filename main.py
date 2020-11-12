@@ -45,6 +45,11 @@ while keep_playing:
         if snake.head.ycor() > 260 or snake.head.ycor() < -280:
             game_over = True
 
+        # Hit tail
+        for segment in snake.tail:
+            if snake.head.distance(segment) < 10:
+                game_over = True
+
         time.sleep(0.1)
 
     user_choice = screen.numinput("Game over", f"Your score: {score.score}\nInput 1 to play again or 2 to exit.", 1, minval=1, maxval=2)

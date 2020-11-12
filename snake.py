@@ -1,4 +1,4 @@
-INITIAL_POSITIONS = [(-40, 0), (-20, 0), (0, 0)]
+INITIAL_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
 HEADINGS = {
     "Up": 90,
@@ -26,6 +26,8 @@ class Snake:
         for position in INITIAL_POSITIONS:
             self.add_segment(position)
         self.head = self.body[0]
+        self.tail = self.body[1:]
+
 
     def add_segment(self, position):
         new_segment = Turtle(shape="square")
@@ -37,6 +39,7 @@ class Snake:
     def extend(self):
         last_position = self.body[-1].position()
         self.add_segment(last_position)
+        self.tail = self.body[1:]
 
     def delete_snake(self):
         
