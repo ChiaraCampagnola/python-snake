@@ -19,14 +19,12 @@ OPPOSITE_DIRECTIONS = {
 class Snake:
     ''' Controls everything to do with the snake'''
     def __init__(self):
-        self.body = []
-        self.head = []
-        self.tail = []
         self.create_snake()
 
 
     def create_snake(self):
         ''' Creates a snake made of three segments '''
+        self.body = []
         for position in INITIAL_POSITIONS:
             self.add_segment(position)
         self.head = self.body[0]

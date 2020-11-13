@@ -1,13 +1,15 @@
+#!/usr/bin/env python3
+
 ''' Main file, controls game flow '''
 
 from turtle import Screen
 from functools import partial
 import time
 
-from utils import set_up_screen
-from snake import Snake
-from food import Food
-from score import Score
+from snakegame.utils import set_up_screen
+from snakegame.snake import Snake
+from snakegame.food import Food
+from snakegame.score import Score
 
 SCREEN_SIZE = 600
 

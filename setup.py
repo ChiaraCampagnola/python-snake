@@ -1,14 +1,13 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
-    name='Snake',
+    name='snakegame',
     url='https://github.com/ChiaraCampagnola/python-snake',
     author='Chiara Campagnola',
     author_email='chiaracampagnola@gmail.com',
-    packages=['snake'],
-    install_requires=['turtle'],
+    packages=find_packages(),
     entry_points={
-        'console_scripts': ['play-snake=snake-game.main:main']
+        'console_scripts': ['play-snake=snakegame.main:main']
     },
     version='0.1',
     # The license can be anything you like
