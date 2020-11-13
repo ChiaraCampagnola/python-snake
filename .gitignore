@@ -1,6 +1,5 @@
 *.egg-info
-/__pycache__
-snake-game/__pycache__
+*/__pycache__
 snake-env/
 snakegame.egg-info
 .vscode/
