@@ -10,7 +10,6 @@ setup(
         'console_scripts': ['play-snake=snakegame.main:main']
     },
     version='0.1',
-    # The license can be anything you like
     license='MIT',
-    description='An example of a python package from pre-existing code',
+    description='Simple snake game',
 )
