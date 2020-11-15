@@ -7,7 +7,7 @@ setup(
     author_email='chiaracampagnola@gmail.com',
     packages=find_packages(),
     entry_points={
-        'console_scripts': ['play-snake=snakegame.main:main']
+        'console_scripts': ['snakegame=snakegame.main:main']
     },
     version='0.1',
     license='MIT',
