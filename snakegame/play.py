@@ -7,7 +7,8 @@ from snakegame.food import Food
 from snakegame.score import Score
 from snakegame.utils import set_up_screen
 
-SCREEN_SIZE = 600
+SCREEN_SIZE = 500
+HALF_SCREEN = SCREEN_SIZE/2
 
 def play():
     ''' Plays game '''
@@ -26,6 +27,8 @@ def play():
     screen.onkey(partial(snake.set_direction, "Left"), key="Left")
     screen.onkey(partial(snake.set_direction, "Right"), key="Right")
 
+    wall_limit = HALF_SCREEN-40
+
     keep_playing = True
 
     while keep_playing:
@@ -43,9 +46,9 @@ def play():
                 snake.extend()
 
             # Hit wall
-            if snake.head.xcor() > 280 or snake.head.xcor() < -280:
+            if snake.head.xcor() > wall_limit or snake.head.xcor() < -wall_limit-20:
                 game_over = True
-            if snake.head.ycor() > 260 or snake.head.ycor() < -280:
+            if snake.head.ycor() > wall_limit or snake.head.ycor() < -wall_limit:
                 game_over = True
 
             # Hit tail

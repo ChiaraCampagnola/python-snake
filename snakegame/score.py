@@ -1,6 +1,8 @@
 import pkg_resources
 from turtle import Turtle
 from snakegame.utils import get_high_score, save_high_score
+SCREEN_SIZE = 500
+HALF_SCREEN = SCREEN_SIZE/2
 
 class Score(Turtle):
     ''' Keeps track of score and displays it on screen '''
@@ -9,7 +11,7 @@ class Score(Turtle):
 
         self.hideturtle()
         self.penup()
-        self.goto(-90,275)
+        self.goto(-90,HALF_SCREEN-25)
         self.pencolor("black")
 
         self.score = 0

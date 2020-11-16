@@ -1,6 +1,9 @@
 from turtle import Turtle
 import random
 
+SCREEN_SIZE = 500
+HALF_SCREEN = SCREEN_SIZE/2
+
 class Food(Turtle):
     ''' Creates and controls the snake food '''
 
@@ -16,6 +19,9 @@ class Food(Turtle):
     def move(self):
         ''' Move the piece of food to a random location'''
          # Create food at random location
-        random_location = (random.randint(-270, 270),
-                            random.randint(-270, 260))
+
+        food_limit = HALF_SCREEN-35
+
+        random_location = (random.randint(-food_limit, food_limit),
+                            random.randint(-food_limit, food_limit))
         self.goto(random_location)
