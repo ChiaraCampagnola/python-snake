@@ -7,7 +7,7 @@ Simple project (a basic game of snake) to understand how python packages work.
 ### Play
 ```snakegame```
 
-### Show highscore
+### Show high score
 ```snakegame -s```
 or
 ```snakegame --score```

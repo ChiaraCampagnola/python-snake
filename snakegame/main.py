@@ -26,7 +26,7 @@ def main():
     elif args.reset:
         old_highscore = get_high_score()
         save_high_score(0)
-        print(f'The highscore has been reset. It was previously {old_highscore}.')
+        print(f'The high score has been reset. It was previously {old_highscore}.')
     else:
         play()
 
