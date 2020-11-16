@@ -6,3 +6,13 @@ Simple project (a basic game of snake) to understand how python packages work.
 
 ### Play
 ```snakegame```
+
+### Show highscore
+```snakegame -s```
+or
+```snakegame --score```
+
+### Reset high score
+```snakegame -r```
+or
+```snakegame --reset```
