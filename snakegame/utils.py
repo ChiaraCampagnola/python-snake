@@ -1,7 +1,7 @@
-''' Some useful functions to avoid cluttering main '''
-
+import pkg_resources
 from turtle import Turtle
 
+HIGH_SCORE_FILE = pkg_resources.resource_filename('snakegame', 'resources/highscore.txt')
 SCREEN_SIZE = 600
 
 def set_up_screen(screen):
@@ -25,6 +25,11 @@ def set_up_screen(screen):
     draw.goto(290, -290)
     draw.goto(-290, -290)
 
-# def save_high_score(highscore):
-#     with open("snake_highscore.txt", mode="w") as file:
-#         file.write(highscore)
+def get_high_score():
+    with open(HIGH_SCORE_FILE, mode="r") as file:
+        highscore = int(file.read())
+    return highscore
+
+def save_high_score(highscore):
+    with open(HIGH_SCORE_FILE, mode="w") as file:
+        file.write(str(highscore))

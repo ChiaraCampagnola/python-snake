@@ -2,77 +2,33 @@
 
 ''' Main file, controls game flow '''
 
-from turtle import Screen
-from functools import partial
-import time
+import argparse
 
-from snakegame.snake import Snake
-from snakegame.food import Food
-from snakegame.score import Score
-from snakegame.utils import set_up_screen
+from snakegame.play import play
+from snakegame.utils import get_high_score, save_high_score
 
-SCREEN_SIZE = 600
 
 def main():
-    ''' Plays game '''
+    ''' Parse arguments '''
 
-    screen = Screen()
-    set_up_screen(screen)
+    parser = argparse.ArgumentParser(description='A simple game of snake.')
 
-    snake = Snake()
-    food = Food()
-    score = Score()
-    screen.update()
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('-s', '--score', help='Show the current high score', 
+                    action='store_const', const=True)
+    group.add_argument('-r', '--reset', help='Reset the current high score', 
+                    action='store_const', const=True)
+    args = parser.parse_args()
 
-    screen.listen()
-    screen.onkey(partial(snake.set_direction, "Up"), key="Up")
-    screen.onkey(partial(snake.set_direction, "Down"), key="Down")
-    screen.onkey(partial(snake.set_direction, "Left"), key="Left")
-    screen.onkey(partial(snake.set_direction, "Right"), key="Right")
-
-    keep_playing = True
-
-    while keep_playing:
-
-        game_over = False
-        while not game_over:
-
-            snake.move()
-            screen.update()
-
-            # Eat food
-            if snake.head.distance(food) < 15:
-                score.update()
-                food.move()
-                snake.extend()
-
-            # Hit wall
-            if snake.head.xcor() > 280 or snake.head.xcor() < -280:
-                game_over = True
-            if snake.head.ycor() > 260 or snake.head.ycor() < -280:
-                game_over = True
-
-            # Hit tail
-            for segment in snake.tail:
-                if snake.head.distance(segment) < 10:
-                    game_over = True
-
-            time.sleep(0.1)
-
-        score.update_highscore()
-
-        user_choice = screen.numinput("Game over",
-            f"Your score: {score.score}\nInput 1 to play again or 2 to exit.",
-            1, minval=1, maxval=2)
-        if user_choice == 2:
-            keep_playing = False
-        else:
-            food.move()
-            snake.delete_snake()
-            snake.create_snake()
-            score.reset()
-            screen.update()
-            screen.listen()
+    if args.score:
+        highscore = get_high_score()
+        print(f"Current high score: {highscore}")
+    elif args.reset:
+        old_highscore = highscore = get_high_score()
+        save_high_score(0)
+        print(f'The highscore has been reset. It was previously {old_highscore}.')
+    else:
+        play()
 
 if __name__ == "__main__":
     main()
