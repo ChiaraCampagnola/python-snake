@@ -24,3 +24,7 @@ def set_up_screen(screen):
     draw.pensize(20)
     draw.goto(290, -290)
     draw.goto(-290, -290)
+
+# def save_high_score(highscore):
+#     with open("snake_highscore.txt", mode="w") as file:
+#         file.write(highscore)

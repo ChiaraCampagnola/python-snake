@@ -6,15 +6,16 @@ from turtle import Screen
 from functools import partial
 import time
 
-from snakegame.utils import set_up_screen
 from snakegame.snake import Snake
 from snakegame.food import Food
 from snakegame.score import Score
+from snakegame.utils import set_up_screen
 
 SCREEN_SIZE = 600
 
 def main():
     ''' Plays game '''
+
     screen = Screen()
     set_up_screen(screen)
 
@@ -57,6 +58,8 @@ def main():
                     game_over = True
 
             time.sleep(0.1)
+
+        score.update_highscore()
 
         user_choice = screen.numinput("Game over",
             f"Your score: {score.score}\nInput 1 to play again or 2 to exit.",
