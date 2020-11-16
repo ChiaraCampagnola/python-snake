@@ -1,4 +1,7 @@
 from turtle import Turtle
+import pkg_resources
+
+HIGH_SCORE_FILE = pkg_resources.resource_filename('snakegame', 'resources/highscore.txt')
 
 class Score(Turtle):
     ''' Keeps track of score and displays it on screen '''
@@ -35,13 +38,10 @@ class Score(Turtle):
             self.save_high_score()
 
     def save_high_score(self):
-        with open("snake_highscore.txt", mode="w") as file:
+        with open(HIGH_SCORE_FILE, mode="w") as file:
             file.write(str(self.highscore))
 
     def get_high_score(self):
-        try:
-            with open("snake_highscore.txt", mode="r") as file:
-                highscore = int(file.read())
-        except:
-            highscore = 0
+        with open(HIGH_SCORE_FILE, mode="r") as file:
+            highscore = int(file.read())
         return highscore

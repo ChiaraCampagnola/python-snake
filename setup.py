@@ -6,6 +6,7 @@ setup(
     author='Chiara Campagnola',
     author_email='chiaracampagnola@gmail.com',
     packages=find_packages(),
+    package_data={'snakegame': ['resources/*.txt']},
     entry_points={
         'console_scripts': ['snakegame=snakegame.main:main']
     },
