@@ -11,6 +11,7 @@ setup(
         'console_scripts': ['snakegame=snakegame.main:main']
     },
     version='0.1',
+    python_requires='>=3.9',
     license='MIT',
     description='Simple snake game',
 )

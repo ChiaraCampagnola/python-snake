@@ -5,3 +5,7 @@ snakegame.egg-info
 .vscode/
 build/
 dist/
+
+tox.ini
+.tox/
+.python-version
